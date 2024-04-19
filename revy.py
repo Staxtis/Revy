@@ -124,9 +124,12 @@ def main(connection, revy, webshell = '', escape = [], space2cross = '', uencode
 		revy = rencoded
 	if space2cross != '':
 		revy = revy.replace(' ', "+")
-	pyperclip.copy(revy.strip())
-	print("[+] Revy copied to clipboard!")
-	print(revy.strip())
+	if sys.argv[1] != '-h':
+		pyperclip.copy(revy.strip())
+		print("[+] Revy copied to clipboard!")
+		print(revy.strip())
+	else: 
+		print(revy.strip())
 
 def help():
 	revies = ''
